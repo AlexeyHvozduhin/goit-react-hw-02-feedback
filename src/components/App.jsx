@@ -41,8 +41,7 @@ export class App extends Component {
   countPositiveFeedbackPercentage = () => {
     const { good, neutral, bad } = this.state;
     const positiveFeedback = (100 / (good + neutral + bad)) * good;
-    // Проверка на NaN
-    if (positiveFeedback !== positiveFeedback) return '?';
+    if (isNaN(positiveFeedback)) return '?';
     else return `${Math.round(positiveFeedback)}%`;
   };
 
