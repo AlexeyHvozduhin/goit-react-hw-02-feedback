@@ -1,5 +1,4 @@
 import { ContHeader, ContButton } from './FeedbackOptions.styled';
-import { BiAtom } from 'react-icons/bi';
 
 export const FeedbackOptions = ({ onLeaveFeedback, resetStatistic }) => {
   return (
