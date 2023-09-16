@@ -11,22 +11,8 @@ export class App extends Component {
   };
 
   chengeStatistic = newLevel => {
-    console.log(newLevel.target.value);
-    switch (newLevel.target.value) {
-      case 'good':
-        this.setState(prevState => ({ good: prevState.good + 1 }));
-        break;
-      case 'neutral':
-        this.setState(prevState => ({ neutral: prevState.neutral + 1 }));
-        break;
-      case 'bad':
-        this.setState(prevState => ({ bad: prevState.bad + 1 }));
-        break;
-
-      default:
-        console.log('Woooops');
-        break;
-    }
+    console.log(newLevel);
+    this.setState(prevState => ({ [newLevel]: prevState[newLevel] + 1 }));
   };
 
   resetStatistic = () => {
@@ -54,6 +40,7 @@ export class App extends Component {
       <div style={{ textAlign: 'center' }}>
         <Section title="Feedback">
           <FeedbackOptions
+            options={Object.keys(this.state)}
             onLeaveFeedback={this.chengeStatistic}
             resetStatistic={this.resetStatistic}
           />

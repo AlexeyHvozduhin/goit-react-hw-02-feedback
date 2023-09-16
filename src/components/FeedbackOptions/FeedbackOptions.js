@@ -1,18 +1,27 @@
 import { ContHeader, ContButton } from './FeedbackOptions.styled';
+import { nanoid } from 'nanoid';
 
-export const FeedbackOptions = ({ onLeaveFeedback, resetStatistic }) => {
+export const FeedbackOptions = ({
+  onLeaveFeedback,
+  resetStatistic,
+  options,
+}) => {
   return (
     <div>
       <ContHeader>Please leave feedback</ContHeader>
-      <ContButton onClick={onLeaveFeedback} value={'good'}>
-        G
-      </ContButton>
-      <ContButton onClick={onLeaveFeedback} value={'neutral'}>
-        N
-      </ContButton>
-      <ContButton onClick={onLeaveFeedback} value={'bad'}>
-        B
-      </ContButton>
+
+      {options.map(option => {
+        return (
+          <ContButton
+            onClick={() => {
+              onLeaveFeedback(option);
+            }}
+            key={nanoid()}
+          >
+            {option[0].toUpperCase()}
+          </ContButton>
+        );
+      })}
       <ContButton onClick={resetStatistic}>R</ContButton>
     </div>
   );
